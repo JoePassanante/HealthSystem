@@ -1,87 +1,27 @@
+<!DOCTYPE html>
 <!-- Home -->
 <html>
 
-<head>
-    <title>Home</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <head>
+        <title>Home</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-</head>
-<style>
-    .clickable{
-    cursor: pointer;
-}
-#codes{
-    padding-top: 30px;
-}
-.img{
-    width: 400px;
-    height: 400px;
-}
-.right{
-    align-content: right;
-}
-.medical {
-    padding-bottom: 230px;
-}
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-   max-width: 100%!important;
-}
-#NavBottom{
-    height: 230px;
-    box-shadow: 0px 4px 0px rgb(182, 182, 182), 0px -5px 5px rgba(182, 181, 181, 0.514);
-    position: fixed;
-    bottom: 0;
-    background-color: #343a40!important;
-    width: 100%;
-    z-index: 3;
-    padding: 5px 5px 5px 5px
-}
-.center{
-    text-align: center
-}
-.navseperator{
-    padding-top: 5px
-}
-.btn-sm{
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 14px;
-}
-.table{
-    font-size: 14px;
-}
-.mybutton{
- background-color: white;
- color: black;
-}
-.btn:not(:disabled):not(.disabled):active:focus,
-.btn:focus, .btn.focus
-{
-    box-shadow:none;
-}
-#notes
-{
-    height: 80px;
-    max-height: 100px;  
-}
-</style>
-<nav>
+        <link rel="stylesheet" href="code.css">
+    </head>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">QU Health System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -89,226 +29,113 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="finishcode">Finish Code</a>
-                </li>
+            <ul class="navbar-nav mr-auto">
+                
             </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Finish Code</button>
+            </form>
         </div>
     </nav>
+    <body>
+        <!-- Bottom Nav Bar -->
+        <div id="NavBottom" class="">
+            <div id="states" class="navseperator center">
+                <div class="center" id="top">
+                    <button type="button" class="btn btn-light btn-sm">CONTENT</button>
 
-</nav>
+                </div>
+                <div class="center navseperator" id="bottom">
+                    <button type="button" class="btn btn-light btn-sm">CONTENT</button>
 
-<body>
-    <!-- Bottom Nav Bar -->
-    <div id="NavBottom" class="">
-        <div id="states" class="navseperator center">
-            <div class="center" id="top">
-                <button type="button" class="btn btn-light btn-sm">CONTENT</button>
-
-            </div>
-            <div class="center navseperator" id="bottom">
-                <button type="button" class="btn btn-light btn-sm">CONTENT</button>
-
-            </div>
-            <!-- Top of Form -->
-            <div class="row navseperator">
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Code</span>
-                        </div>
-                        <input id="code" type="text" class="form-control" placeholder="Code..." aria-label="Code"
-                            aria-describedby="basic-addon1">
-                    </div>
                 </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">State</span>
+                <!-- Top of Form -->
+                <div class="row navseperator">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Code</span>
+                            </div>
+                            <input id="code" type="text" class="form-control" placeholder="Code..." aria-label="Code"
+                                aria-describedby="basic-addon1">
                         </div>
-                        <input id="state" type="text" class="form-control" placeholder="State..." aria-label="Code"
-                            aria-describedby="basic-addon1">
                     </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Action</span>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">State</span>
+                            </div>
+                            <input id="state" type="text" class="form-control" placeholder="State..." aria-label="Code"
+                                aria-describedby="basic-addon1">
                         </div>
-                        <input id="action" type="text" class="form-control" placeholder="Action..." aria-label="Code"
-                            aria-describedby="basic-addon1">
                     </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Completed By</span>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Action</span>
+                            </div>
+                            <input id="action" type="text" class="form-control" placeholder="Action..." aria-label="Code"
+                                aria-describedby="basic-addon1">
                         </div>
-                        <input id="by" type="text" class="form-control" placeholder="Who..." aria-label="Code"
-                            aria-describedby="basic-addon1">
                     </div>
-                </div>
-                <!-- <div class="w-100"></div>
-                    <div class="col">col</div>
-                    <div class="col">col</div> -->
-            </div>
-            <div class="row">
-                <div class="col-11">
-                    <div class="input-group navseperator">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Notes</span>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Completed By</span>
+                            </div>
+                            <input id="by" type="text" class="form-control" placeholder="Who..." aria-label="Code" aria-describedby="basic-addon1">
                         </div>
-                        <textarea id="notes" class="form-control" aria-label="With textarea"></textarea>
                     </div>
+                    <!-- <div class="w-100"></div>
+                        <div class="col">col</div>
+                        <div class="col">col</div> -->
                 </div>
-                <div class="col-1 navseperator">
-                    <button id="submitbutton" style="width:100%;word-wrap: break-word; height: 80px" type="button"
-                        class="btn btn-primary btn-sm">
-                        Submit
-                    </button>
+                <div class="row">
+                    <div class="col-11">
+                        <div class="input-group navseperator">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Notes</span>
+                            </div>
+                            <textarea id="notes" class="form-control" aria-label="With textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-1 navseperator">
+                        <button id="submitbutton" style="width:100%;word-wrap: break-word; height: 80px" type="button" class="btn btn-primary btn-sm">
+                            Submit
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-    </div>
-    </div>
-    <!-- Normal Page -->
-    <h1>Code</h1>
-    <div class="medical">
-        <table class="table medical table-responsive">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Action Performed</th>
-                    <th scope="col">Completed By</th>
-                    <th scope="col">Notes</th>
-                </tr>
-            </thead>
-            <tbody id="objects">
-                <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>10/10/10</td>
-                    <td>DYING</td>
-                    <td>Not dead yet</td>
-                    <td>Live saving god</td>
-                    <td>Joe Passanante</td>
-                    <td>Notes</td>
-                </tr> -->
-            </tbody>
-        </table>
-    </div>
-</body>
-<script>
-    console.log("Getting current data...")
-    const urlParams = new URLSearchParams(window.location.search);
-    const codeID = urlParams.get('codeid');
-    console.log("myCode", codeID)
-    const baseURL = '/api/data/?codeid=' + codeID
-    let currID = 1
-    $.ajax({
-        type: 'GET',
-        url: baseURL,
-        dataType: 'json',
-        success: function (data) {
-            console.log(data)
-            if (data.hasOwnProperty("datapoints")) {
-                //we have data. 
-                if (data.datapoints.length == 0)
-                    return
-
-                for (index in data.datapoints) {
-                    currID = currID + 1
-                    var table = $("#objects").append("<tr id = " + currID + "></tr>")
-                    var parent = table.find("#" + currID)
-                    parent.append("<th scope=\"row\">" + currID + "</th>");
-                    var point = data.datapoints[index]
-                    console.log("Append")
-                    parent.append("<td>" + (formatdate(point.date) || "N/A") + "</td>"); //Data
-                    parent.append("<td>" + (point.code || "N/A") + "</td>"); //Code
-                    parent.append("<td>" + (point.state || "N/A") + "</td>"); // State
-                    parent.append("<td>" + (point.action || "N/A") + "</td>"); // Action Performed
-                    parent.append("<td>" + (point.author || "N/A") + "</td>"); // Completed By
-                    parent.append("<td>" + (point.notes || "N/A") + "</td>"); // Notes
-                }
-                scroll()
-            } else {
-                throw "NO DATA POINTS"
-            }
-        },
-        error: function (data) {
-            console.log("Error")
-        }
-    });
-    //handle click events
-    const submitForm = function (event) {
-        console.log("Submitting Form")
-        const c = $("#code")
-        const s = $("#state")
-        const a = $("#action")
-        const b = $("#by")
-        const n = $("#notes")
-        let form = {
-            "code": c.val(),
-            "state": s.val(),
-            "action": a.val(),
-            "by": b.val(),
-            "notes": n.val(),
-            "date": new Date()
-        }
-        newDatePoint(form)
-    }
-    $("#submitbutton").click(submitForm)
-    const newDatePoint = function (form) {
-        $.ajax({
-            type: 'POST',
-            url: baseURL,
-            dataType: 'json',
-            data: form,
-            success: function (data) {
-                console.log(data)
-                if (data.hasOwnProperty("datapoints")) {
-                    //we have data. 
-                    if (data.datapoints.length == 0)
-                        return
-
-                    for (index in data.datapoints) {
-                        currID = currID + 1
-                        var table = $("#objects").append("<tr id = " + currID + "></tr>")
-                        var parent = table.find("#" + currID)
-                        parent.append("<th scope=\"row\">" + currID + "</th>");
-                        var point = data.datapoints[index]
-                        console.log("Append")
-                        parent.append("<td>" + (formatdate(form.date) || "N/A") + "</td>"); //Data
-                        parent.append("<td>" + (form.code || "N/A") + "</td>"); //Code
-                        parent.append("<td>" + (form.state || "N/A") + "</td>"); // State
-                        parent.append("<td>" + (form.by || "N/A") + "</td>"); // Action Performed
-                        parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
-                    }
-                    scroll()
-                } else {
-                    throw "NO DATA POINTS"
-                }
-            },
-            error: function (data) {
-                console.log("Error")
-            }
-        });
-    }
-    const formatdate = function (date) {
-        if (!(date instanceof Date)) {
-            return null
-        }
-        return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds()
-    }
-    const scroll = function () {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
+        <!-- Normal Page -->
+        <fieldset class="medicalgroup">
+            <legend>Code</legend>
+            <table class="table medical table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Action Performed</th>
+                        <th scope="col">Completed By</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="objects">
+                    <!-- <tr>
+                        <th scope="row">1</th>
+                        <td>10/10/10</td>
+                        <td>DYING</td>
+                        <td>Not dead yet</td>
+                        <td>Live saving god</td>
+                        <td>Joe Passanante</td>
+                        <td>Notes</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </fieldset>
+    </body>
+    <script src="code.js" type="text/JavaScript"></script>
 
 </html>
