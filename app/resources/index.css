@@ -1,0 +1,30 @@
+#codes{
+	padding-top: 30px;
+}
+.img{
+	width: 400px;
+	height: 400px;
+}
+.card{
+	width: 300px;
+	height: 300px;
+}
+.center{
+	text-align: center;
+	align-content: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+.card-title{
+	color: black;
+}
+.active{
+	cursor: pointer;
+}
+.active:hover{
+	background-color: lightgray;
+}
+.disabled{
+	pointer-events: none;
+	color :darkgrey;
+}
