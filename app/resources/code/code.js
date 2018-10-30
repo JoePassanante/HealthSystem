@@ -23,11 +23,11 @@ $.ajax({
 				var point = data.datapoints[index]
 				console.log("Append")
 				parent.append("<td>" + (formatdate(point.date) || "N/A") + "</td>"); //Data
-				parent.append("<td>" + (point.code || "N/A") + "</td>"); //Code
-				parent.append("<td>" + (point.state || "N/A") + "</td>"); // State
+				parent.append("<td>" + (point.code   || "N/A") + "</td>"); //Code
+				parent.append("<td>" + (point.state  || "N/A") + "</td>"); // State
 				parent.append("<td>" + (point.action || "N/A") + "</td>"); // Action Performed
 				parent.append("<td>" + (point.author || "N/A") + "</td>"); // Completed By
-				parent.append("<td>" + (point.notes || "N/A") + "</td>"); // Notes
+				parent.append("<td>" + (point.notes  || "N/A") + "</td>"); // Notes
 			}
 			scroll()
 		} else {
@@ -76,9 +76,9 @@ const newDatePoint = function (form) {
 					var point = data.datapoints[index]
 					console.log("Append")
 					parent.append("<td>" + (formatdate(form.date) || "N/A") + "</td>"); //Data
-					parent.append("<td>" + (form.code || "N/A") + "</td>"); //Code
+					parent.append("<td>" + (form.code  || "N/A") + "</td>"); //Code
 					parent.append("<td>" + (form.state || "N/A") + "</td>"); // State
-					parent.append("<td>" + (form.by || "N/A") + "</td>"); // Action Performed
+					parent.append("<td>" + (form.by    || "N/A") + "</td>"); // Action Performed
 					parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
 				}
 				scroll()
