@@ -27,6 +27,7 @@ app.use((req,res,next)=>{
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
+app.use(express.static("app/resources"));
 
 // required for passport
 app.set('trust proxy', 1) // trust first proxy
