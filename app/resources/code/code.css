@@ -11,7 +11,8 @@
 .right{
     align-content: right;
 }
-.medical {
+.medicalgroup {
+    box-sizing: border-box;
     padding-bottom: 230px;
 }
 .nopadding {
