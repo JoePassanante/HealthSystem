@@ -42,6 +42,7 @@ app.use(session({
              expires: new Date( Date.now() + 60 * 60 * 1000 * 48)
             }
 }))
+// app.use(express.static)
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session

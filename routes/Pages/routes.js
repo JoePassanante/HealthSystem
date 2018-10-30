@@ -1,7 +1,8 @@
 // app/routes.js
 const path = require("path")
-const codes = require("../../config/codes")
-
+const configcodes = require("../../config/codes")
+const Code = require("../../app/models/code")
+const Entry = require("../../app/models/entry") 
 module.exports = function (express, passport) {
     router = express.Router();
     // HOME PAGE
@@ -17,8 +18,8 @@ module.exports = function (express, passport) {
     router.get("/startcode/:id",(req,res,next)=>{
         console.log("Current Code",req.params)
         //check to make sure the code exists
-        for(index in codes.codes){
-            let code = codes.codes[index]
+        for(index in configcodes.codes){
+            let code = configcodes.codes[index]
             console.log("Found code",code.name)
             if(code.name.trim().toLowerCase()==req.params.id.trim().toLowerCase()){
                 return startCode(req,res,next)
@@ -40,7 +41,15 @@ module.exports = function (express, passport) {
     })
 
     const startCode = function(req,res,next){
-        res.redirect("/code/?codeid="+Math.round(Math.random()*100))
+        let code = new Code()
+        code.catagory = req.params.id.trim().toLowerCase()
+        code.date = new Date();
+        code.save(function(err){
+            if(err){
+                return res.status(500).send("ahh.. there was an error.")
+            }
+            res.redirect("/code/?codeid="+code._id)
+        })
     }
 
     return router;

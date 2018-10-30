@@ -145,7 +145,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Completed By</span>
                         </div>
-                        <input id="by" type="text" class="form-control" placeholder="Who..." aria-label="Code" aria-describedby="basic-addon1">
+                        <input id="by" type="text" class="form-control" placeholder="Who..." aria-label="Code"
+                            aria-describedby="basic-addon1">
                     </div>
                 </div>
                 <!-- <div class="w-100"></div>
@@ -162,7 +163,8 @@
                     </div>
                 </div>
                 <div class="col-1 navseperator">
-                    <button id="submitbutton" style="width:100%;word-wrap: break-word; height: 80px" type="button" class="btn btn-primary btn-sm">
+                    <button id="submitbutton" style="width:100%;word-wrap: break-word; height: 80px" type="button"
+                        class="btn btn-primary btn-sm">
                         Submit
                     </button>
                 </div>
@@ -220,7 +222,7 @@
                     return
 
                 for (index in data.datapoints) {
-                    currID = currID +1
+                    currID = currID + 1
                     var table = $("#objects").append("<tr id = " + currID + "></tr>")
                     var parent = table.find("#" + currID)
                     parent.append("<th scope=\"row\">" + currID + "</th>");
@@ -243,17 +245,19 @@
         }
     });
     //handle click events
-    const submitForm = function(event){
+    const submitForm = function (event) {
         console.log("Submitting Form")
         const c = $("#code")
         const s = $("#state")
         const a = $("#action")
         const b = $("#by")
+        const n = $("#notes")
         let form = {
-            "code":c.val(),
-            "state":s.val(),
-            "action":a.val(),
-            "by":b.val(),
+            "code": c.val(),
+            "state": s.val(),
+            "action": a.val(),
+            "by": b.val(),
+            "notes": n.val(),
             "date": new Date()
         }
         newDatePoint(form)
@@ -273,17 +277,17 @@
                         return
 
                     for (index in data.datapoints) {
-                        currID = currID +1
-                    var table = $("#objects").append("<tr id = " + currID + "></tr>")
-                    var parent = table.find("#" + currID)
-                    parent.append("<th scope=\"row\">" + currID + "</th>");
-                    var point = data.datapoints[index]
-                    console.log("Append")
-                    parent.append("<td>" + (formatdate(form.date) || "N/A") + "</td>"); //Data
-                    parent.append("<td>" + (form.code || "N/A") + "</td>"); //Code
-                    parent.append("<td>" + (form.state || "N/A") + "</td>"); // State
-                    parent.append("<td>" + (form.by || "N/A") + "</td>"); // Action Performed
-                    parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
+                        currID = currID + 1
+                        var table = $("#objects").append("<tr id = " + currID + "></tr>")
+                        var parent = table.find("#" + currID)
+                        parent.append("<th scope=\"row\">" + currID + "</th>");
+                        var point = data.datapoints[index]
+                        console.log("Append")
+                        parent.append("<td>" + (formatdate(form.date) || "N/A") + "</td>"); //Data
+                        parent.append("<td>" + (form.code || "N/A") + "</td>"); //Code
+                        parent.append("<td>" + (form.state || "N/A") + "</td>"); // State
+                        parent.append("<td>" + (form.by || "N/A") + "</td>"); // Action Performed
+                        parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
                     }
                     scroll()
                 } else {
@@ -295,14 +299,14 @@
             }
         });
     }
-    const formatdate = function(date){
-        if(!(date instanceof Date)){
+    const formatdate = function (date) {
+        if (!(date instanceof Date)) {
             return null
         }
-        return date.getMonth() + "/" +date.getDate() + "/" +date.getFullYear() + " " + (date.getHours()) + ":"+date.getMinutes()+":"+date.getSeconds()
+        return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds()
     }
-    const scroll = function(){
-        window.scrollTo(0,document.body.scrollHeight);
+    const scroll = function () {
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
 </script>
