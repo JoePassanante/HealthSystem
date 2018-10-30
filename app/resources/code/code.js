@@ -16,7 +16,7 @@ $.ajax({
 				return
 
 			for (index in data.datapoints) {
-				currID = currID + 1
+				currID = currID
 				var table = $("#objects").append("<tr id = " + currID + "></tr>")
 				var parent = table.find("#" + currID)
 				parent.append("<th scope=\"row\">" + currID + "</th>");
@@ -69,7 +69,7 @@ const newDatePoint = function (form) {
 					return
 
 				for (index in data.datapoints) {
-					currID = currID + 1
+					currID = currID
 					var table = $("#objects").append("<tr id = " + currID + "></tr>")
 					var parent = table.find("#" + currID)
 					parent.append("<th scope=\"row\">" + currID + "</th>");
