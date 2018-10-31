@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const codeID = urlParams.get('codeid');
 console.log("myCode", codeID)
 const baseURL = '/api/data/?codeid=' + codeID
-let currID = 1
+let currID = 0
 $.ajax({
 	type: 'GET',
 	url: baseURL,

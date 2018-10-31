@@ -15,9 +15,12 @@ module.exports = function(express, passport){
     router.post("/data",(req,res)=>{
         console.log(req.body,req.query.codeid)
         saveEntry(req.body,req.query.codeid)
-        res.status(200).json({status:200,"message":"Got request",datapoints:[
-            
-        ]})
+        .then((data)=>{
+            console.log(data)
+            res.status(200).json({status:200,"message":"Got request",datapoints:[
+                data
+            ]})
+        })
     })
 
     router.use(middle)
