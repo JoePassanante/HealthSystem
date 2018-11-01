@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="code.css">
     </head>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">QU Health System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
                 <!-- additional nav items would go here but we don't have any -->
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Finish Code</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id="finishcode">Finish Code</button>
             </form>
         </div>
     </nav>
@@ -49,15 +49,6 @@
                 </div>
                 <!-- Top of Form -->
                 <div class="row navseperator">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Code</span>
-                            </div>
-                            <input id="code" type="text" class="form-control" placeholder="Code..." aria-label="Code"
-                                aria-describedby="basic-addon1">
-                        </div>
-                    </div>
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -84,9 +75,6 @@
                             <input id="by" type="text" class="form-control" placeholder="Who..." aria-label="Code" aria-describedby="basic-addon1">
                         </div>
                     </div>
-                    <!-- <div class="w-100"></div>
-                        <div class="col">col</div>
-                        <div class="col">col</div> -->
                 </div>
                 <div class="row">
                     <div class="col-11">
@@ -113,7 +101,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Cardova</th>
+                        <th scope="col">State</th>
                         <th scope="col">Action Performed</th>
                         <th scope="col">Completed By</th>
                         <th scope="col">Notes</th>

@@ -16,18 +16,9 @@ $.ajax({
 				return
 
 			for (index in data.datapoints) {
-				currID = currID + 1
-				var table = $("#objects").append("<tr id = " + currID + "></tr>")
-				var parent = table.find("#" + currID)
-				parent.append("<th scope=\"row\">" + currID + "</th>");
 				var point = data.datapoints[index]
 				console.log("Append")
-				parent.append("<td>" + (formatdate(point.date) || "N/A") + "</td>"); //Data
-				parent.append("<td>" + (point.code   || "N/A") + "</td>"); //Code
-				parent.append("<td>" + (point.state  || "N/A") + "</td>"); // State
-				parent.append("<td>" + (point.action || "N/A") + "</td>"); // Action Performed
-				parent.append("<td>" + (point.author || "N/A") + "</td>"); // Completed By
-				parent.append("<td>" + (point.notes  || "N/A") + "</td>"); // Notes
+				inputRow(point)
 			}
 			scroll()
 		} else {
@@ -47,15 +38,22 @@ const submitForm = function (event) {
 	const b = $("#by")
 	const n = $("#notes")
 	let form = {
-		"code": c.val(),
 		"state": s.val(),
 		"action": a.val(),
-		"by": b.val(),
+		"author": b.val(),
 		"notes": n.val(),
 		"date": new Date()
 	}
 	newDatePoint(form)
+	c.val() = ""
+	s.val() = ""
+	a.val() = ""
+	b.val() = ""
+	n.val() = ""
 }
+$("#finishcode").click((event)=>{
+	alert("Done")
+})
 $("#submitbutton").click(submitForm)
 const newDatePoint = function (form) {
 	$.ajax({
@@ -71,17 +69,7 @@ const newDatePoint = function (form) {
 					return
 
 				for (index in data.datapoints) {
-					currID = currID + 1
-					var table = $("#objects").append("<tr id = " + currID + "></tr>")
-					var parent = table.find("#" + currID)
-					parent.append("<th scope=\"row\">" + currID + "</th>");
-					var point = data.datapoints[index]
-					console.log("Append")
-					parent.append("<td>" + (formatdate(form.date) || "N/A") + "</td>"); //Data
-					parent.append("<td>" + (form.code  || "N/A") + "</td>"); //Code
-					parent.append("<td>" + (form.state || "N/A") + "</td>"); // State
-					parent.append("<td>" + (form.by    || "N/A") + "</td>"); // Action Performed
-					parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
+					inputRow(form)
 				}
 				scroll()
 			} else {
@@ -92,6 +80,18 @@ const newDatePoint = function (form) {
 			console.log("Error")
 		}
 	});
+}
+const inputRow = function(form){
+	currID = currID + 1
+	var table = $("#objects").append("<tr id = " + currID + "></tr>")
+	var parent = table.find("#" + currID)
+	parent.append("<th scope=\"row\">" + currID + "</th>");
+	console.log("Append")
+	parent.append("<td>" + (formatdate(new Date(form.date)) || "N/A") + "</td>"); //Data
+	parent.append("<td>" + (form.state || "N/A") + "</td>"); // State
+	parent.append("<td>" + (form.action || "N/A") + "</td>"); // Action Performed
+	parent.append("<td>" + (form.author    || "N/A") + "</td>"); // Action Performed
+	parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
 }
 const formatdate = function (date) {
 	if (!(date instanceof Date)) {
