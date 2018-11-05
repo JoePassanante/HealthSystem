@@ -6,6 +6,23 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
     catagory: {type: String, required: false, default: ""},
     date: {type: Date, required: false, default: new Date()},
+    
+    //information
+    patientid: {type: String, required: false, default: ""},
+    firstname: {type: String, required: false, default: ""},
+    lastname: {type: String, required: false, default: ""},
+
+    //medical
+    documenter: {type: String, required: false, default: ""},
+
+    //admin
+    patientstatus: {type: String, required: false, default: ""},
+    transfered: {type: String, required: false, default: ""},
+    family: {type: String, required: false, default: ""},
+
+    //Locks
+    codeActive: {type: Boolean, required: false, default: true},
+    canEdit: {type: Boolean, required: false, default: true},
 });
 
 // methods ======================

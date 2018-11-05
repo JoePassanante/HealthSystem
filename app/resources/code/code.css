@@ -63,3 +63,9 @@
 	height: 80px;
 	max-height: 80px;  
 }
+.selected{
+	background-color: lightgray
+}
+.flex-container {
+	display: flex;
+  }

@@ -35,14 +35,40 @@ module.exports = function (express, passport) {
         if(!req.query.hasOwnProperty("codeid")){
             return res.redirect("/")
         }
-
-
-        res.sendFile(file)
+        Code.findOne({_id: req.query.codeid}).lean().exec(function(err,code){
+            if(err || code==undefined || code==null){
+                return res.redirect("/")
+            }
+            if(code.canEdit==false){
+                return res.redirect("/")
+            }
+            return res.sendFile(file)
+        })
     })
     router.get("/finish",(req,res,next)=>{
         let file = path.join(__dirname, "..", "..", "app", "resources","finish", "finish.html") //__dirname is a constant that is established, automatically provides the path to the current folder <THIS> Js file is in. 
         console.log(req.query)
-        res.sendFile(file)
+        //check to see if they can access this page
+        Code.findOne({_id: req.query.codeid}).lean().exec(function(err,code){
+            if(err || code==undefined || code==null){
+                return res.redirect("/")
+            }
+            if(code.canEdit==false){
+                return res.redirect("/")
+            }
+            return res.sendFile(file)
+        })
+    })
+    router.get("/view",(req,res,next)=>{
+        let file = path.join(__dirname, "..", "..", "app", "resources","view", "view.html") //__dirname is a constant that is established, automatically provides the path to the current folder <THIS> Js file is in. 
+        console.log(req.query)
+        //check to see if they can access this page
+        Code.findOne({_id: req.query.codeid}).lean().exec(function(err,code){
+            if(err || code==undefined || code==null){
+                return res.redirect("/")
+            }
+            return res.sendFile(file)
+        })
     })
 
     const startCode = function(req,res,next){

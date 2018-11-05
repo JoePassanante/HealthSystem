@@ -92,7 +92,7 @@ $("#exitcode").click((event)=>{
 	if (confirm("Are you sure you want to save and exit the code! \n\nYou will not be able to edit again!")) {
         console.log("Done")
         save()
-		window.location = "http://localhost:8080/finish/?codeid="+codeID
+		// window.location = "http://localhost:8080/finish/?codeid="+codeID
     } else {
         console.log("Not done")
     }

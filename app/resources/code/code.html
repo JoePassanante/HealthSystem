@@ -40,7 +40,11 @@
         <div id="NavBottom" class="">
             <div id="states" class="navseperator center">
                 <div class="center" id="top">
-                    <button type="button" class="btn btn-light btn-sm">N/A</button>
+                    <button id = "arrest" type="button" class="btn btn-light btn-sm selected">Cardiac Arrest</button>
+                    <button id = "fib" type="button" class="btn btn-light btn-sm">Atrial Fibrillation</button>
+                    <button id = "arrest" type="button" class="btn btn-light btn-sm">Congestive Heart Failure</button>
+                    <button id = "arrest" type="button" class="btn btn-light btn-sm">Stroke</button>
+                    <button id = "arrest" type="button" class="btn btn-light btn-sm">Myocardial Infarction</button>
 
                 </div>
                 <div class="center navseperator" id="bottom">
@@ -76,21 +80,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-11">
-                        <div class="input-group navseperator">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="">Notes</span>
-                            </div>
-                            <textarea id="notes" class="form-control" aria-label="With textarea"></textarea>
+                <div class="flex-container">
+                        <div style = "width:100%">
+                                <div class="input-group navseperator">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="">Notes</span>
+                                        </div>
+                                        <textarea id="notes" class="form-control" aria-label="With textarea"></textarea>
+                                    </div>
                         </div>
-                    </div>
-                    <div class="col-1 navseperator">
-                        <button id="submitbutton" style="width:100%;word-wrap: break-word; height: 80px" type="button" class="btn btn-primary btn-sm">
-                            Submit
-                        </button>
-                    </div>
-                </div>
+                        <div style = "width:100px; padding-left: 5px;">
+                            <div class = "navseperator">
+
+                                <button id="submitbutton" style="width:100%;word-wrap: break-word; height: 80px" type="button" class="btn btn-primary btn-sm">
+                                        Submit
+                                    </button>
+                            </div>
+
+                        </div>  
+                      </div>
             </div>
         </div>
         <!-- Normal Page -->
