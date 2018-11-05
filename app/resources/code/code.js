@@ -54,7 +54,7 @@ $("#finishcode").click((event)=>{
 	event.preventDefault();
 	if (confirm("Are you sure you want to finish the code! \n\nYou will not be able to edit!")) {
 		console.log("Done")
-		window.location.href = "http://localhost:8080/finish/?codeid="+codeID
+		window.location = "http://localhost:8080/finish/?codeid="+codeID
     } else {
         console.log("Not done")
     }

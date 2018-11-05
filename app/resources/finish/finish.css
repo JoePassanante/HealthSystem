@@ -1,4 +1,4 @@
-#content{
+.content{
     padding-top: 60px;
     padding-left: 30px;
     padding-right: 30px;
@@ -12,4 +12,7 @@
 }
 .xxx{
     padding-bottom: 15px;
+}
+.card{
+    
 }
