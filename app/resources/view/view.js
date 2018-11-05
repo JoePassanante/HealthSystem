@@ -22,17 +22,23 @@ const doc = document.getElementById("doc")
 
 const fill = function(){
     console.log("Filling....")
-    console.log(information)
+    
     $.ajax({
-        type: 'GEt',
+        type: 'GET',
         url: '/api/codes',
         dataType: 'json',
-        data: information,
         success: function (data) {
             //we need to go through and cherry pick our code. 
             let datapoints = data.datapoints
             for(index in datapoints){
-
+                let dp = datapoints[index]
+                if(dp._id == codeID){
+                
+                    pid.value = dp.patientid
+                    pfn.value = dp.firstname
+                    pln.value = dp.lastname
+                    doc.value = dp.documenter
+                }
             }
 
         },
@@ -93,3 +99,4 @@ const formatdate = function (date) {
     }
     return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds()
 }
+fill()
