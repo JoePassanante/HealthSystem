@@ -20,7 +20,6 @@ $.ajax({
 				console.log("Append")
 				inputRow(point)
 			}
-			scroll()
 		} else {
 			throw "NO DATA POINTS"
 		}
@@ -52,7 +51,13 @@ const submitForm = function (event) {
 	n.val() = ""
 }
 $("#finishcode").click((event)=>{
-	alert("Done")
+	event.preventDefault();
+	if (confirm("Are you sure you want to finish the code! \n\nYou will not be able to edit!")) {
+		console.log("Done")
+		window.location.href = "http://localhost:8080/finish/?codeid="+codeID
+    } else {
+        console.log("Not done")
+    }
 })
 $("#submitbutton").click(submitForm)
 const newDatePoint = function (form) {
@@ -71,7 +76,6 @@ const newDatePoint = function (form) {
 				for (index in data.datapoints) {
 					inputRow(form)
 				}
-				scroll()
 			} else {
 				throw "NO DATA POINTS"
 			}
@@ -92,6 +96,7 @@ const inputRow = function(form){
 	parent.append("<td>" + (form.action || "N/A") + "</td>"); // Action Performed
 	parent.append("<td>" + (form.author    || "N/A") + "</td>"); // Action Performed
 	parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
+	scroll()
 }
 const formatdate = function (date) {
 	if (!(date instanceof Date)) {

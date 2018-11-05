@@ -37,6 +37,9 @@
 .navseperator{
 	padding-top: 5px
 }
+/* th, td{
+	width:20%!important;
+} */
 .btn-sm{
 	padding-left: 5px;
 	padding-right: 5px;

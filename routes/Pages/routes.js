@@ -39,6 +39,11 @@ module.exports = function (express, passport) {
 
         res.sendFile(file)
     })
+    router.get("/finish",(req,res,next)=>{
+        let file = path.join(__dirname, "..", "..", "app", "resources","finish", "finish.html") //__dirname is a constant that is established, automatically provides the path to the current folder <THIS> Js file is in. 
+        console.log(req.query)
+        res.sendFile(file)
+    })
 
     const startCode = function(req,res,next){
         let code = new Code()
@@ -50,6 +55,9 @@ module.exports = function (express, passport) {
             }
             res.redirect("/code/?codeid="+code._id)
         })
+    }
+    const finishCode = function(req,res,next){
+
     }
 
     return router;

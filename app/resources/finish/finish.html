@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Code</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="finish.css">
+</head>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">QU Health System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <!-- additional nav items would go here but we don't have any -->
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" id="finishcode">Exit Code</button>
+        </div>
+    </div>
+</nav>
+
+<body>
+    <div id="content">
+        <!-- Content -->
+        <h1>Final Information</h1>
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-6 center xxx">
+                <!-- Card -->
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Patient Details</h5>
+                        <form class="left">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Patient ID</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="0000"
+                                    placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Firstname</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="john">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Lastname</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="smith">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- End Card -->
+            </div>
+            <div class="col-12 col-md-12 col-lg-6 center">
+                <!-- Card -->
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Medical Personal Involvement</h5>
+                        <form class="left">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Documenter</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="0000"
+                                    placeholder="full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Medical Staff 1</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="john">
+                            </div>
+                            <button type="button" class="btn btn-secondary">Add another</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- End Card -->
+            </div>
+        </div>
+        <!-- End Row -->
+        <hr />
+        <!-- Start Row 2 -->
+        <div class="row" style="padding-top: 15px">
+            <div class="col-12 col-md-12 col-lg-6 center xxx">
+                <!-- Card -->
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Timing Details</h5>
+                        N/A
+
+                    </div>
+                </div>
+                <!-- End Card -->
+            </div>
+            <div class="col-12 col-md-12 col-lg-6 center">
+                <!-- Card -->
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Medical Personal Involvement</h5>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm left">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" name="livingstatus" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">Alive</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="livingstatus" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">Deceased</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm left">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" name="transfered" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">ICU</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="transfered" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">Morgue</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="transfered" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">Stayed in Unit</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="transfered" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">Other</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm left">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+            </div>
+        </div>
+        <hr/>
+        <h1>Code Events</h1> 
+    </div> <!-- End row -->
+    <table class="table medical">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">State</th>
+                <th scope="col">Action Performed</th>
+                <th scope="col">Completed By</th>
+                <th scope="col">Notes</th>
+            </tr>
+        </thead>
+        <tbody id="objects">
+            <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>10/10/10</td>
+                    <td>DYING</td>
+                    <td>Not dead yet</td>
+                    <td>Live saving god</td>
+                    <td>Joe Passanante</td>
+                    <td>Notes</td>
+                </tr> -->
+        </tbody>
+    </table>
+</body>
+<script src="finish.js" type="text/JavaScript"></script>
+
+</html>
