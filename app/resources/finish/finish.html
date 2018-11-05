@@ -38,6 +38,28 @@
 </nav>
 
 <body>
+    <!-- Modal -->
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End -->
     <div class="content">
         <!-- Content -->
         <h1>Final Information</h1>
@@ -50,7 +72,7 @@
                         <form class="left">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Patient ID</label>
-                                <input type="email" class="form-control" id="id" aria-describedby="0000" placeholder="Enter email">
+                                <input type="email" class="form-control" id="id" aria-describedby="0000" placeholder="ID">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Firstname</label>
@@ -111,27 +133,27 @@
                                 <div class="col-sm left">
                                     <h6>Patient Status:</h6>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="status1" name="living" class="custom-control-input"
+                                        <input type="radio" id="Alive" name="living" class="custom-control-input"
                                             value="Alive">
-                                        <label class="custom-control-label" for="status1">Alive</label>
+                                        <label class="custom-control-label" for="Alive">Alive</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="status2" name="living" class="custom-control-input"
+                                        <input type="radio" id="Deceased" name="living" class="custom-control-input"
                                             value="Deceased">
-                                        <label class="custom-control-label" for="status2">Deceased</label>
+                                        <label class="custom-control-label" for="Deceased">Deceased</label>
                                     </div>
                                 </div>
                                 <div class="col-sm left">
                                     <h6>Transfered to:</h6>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="t1" name="transfered" class="custom-control-input"
+                                        <input type="radio" id="ICU" name="transfered" class="custom-control-input"
                                             value="ICU">
-                                        <label class="custom-control-label" for="t1">ICU</label>
+                                        <label class="custom-control-label" for="ICU">ICU</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="t2" name="transfered" class="custom-control-input"
+                                        <input type="radio" id="Morgue" name="transfered" class="custom-control-input"
                                             value="Morgue">
-                                        <label class="custom-control-label" for="t2">Morgue</label>
+                                        <label class="custom-control-label" for="Morgue">Morgue</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="t3" name="transfered" class="custom-control-input"
@@ -139,20 +161,20 @@
                                         <label class="custom-control-label" for="t3">Stayed in Unit</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="t4" name="transfered" class="custom-control-input"
+                                        <input type="radio" id="Other" name="transfered" class="custom-control-input"
                                             value="Other">
-                                        <label class="custom-control-label" for="t4">Other</label>
+                                        <label class="custom-control-label" for="Other">Other</label>
                                     </div>
                                 </div>
                                 <div class="col-sm left">
                                     <h6>Family Notified</h6>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="f1" name="family" class="custom-control-input" value="yes">
-                                        <label class="custom-control-label" for="f1">Yes</label>
+                                        <input type="radio" id="yes" name="family" class="custom-control-input" value="yes">
+                                        <label class="custom-control-label" for="yes">Yes</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="f2" name="family" class="custom-control-input" value="no">
-                                        <label class="custom-control-label" for="f2">No</label>
+                                        <input type="radio" id="no" name="family" class="custom-control-input" value="no">
+                                        <label class="custom-control-label" for="no">No</label>
                                     </div>
                                 </div>
                             </div>

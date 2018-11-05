@@ -32,7 +32,7 @@
             <!-- additional nav items would go here but we don't have any -->
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" id="exitcode">Exit Code</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" id="printcode">Print</button>
         </div>
     </div>
 </nav>
@@ -50,15 +50,15 @@
                         <form class="left">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Patient ID</label>
-                                <input type="email" class="form-control" id="id" aria-describedby="0000" placeholder="Enter email">
+                                <input type="email" class="form-control" id="id" aria-describedby="0000" placeholder="N/A" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Firstname</label>
-                                <input type="text" class="form-control" id="firstname" placeholder="john">
+                                <input type="text" class="form-control" id="firstname" placeholder="N/A" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Lastname</label>
-                                <input type="text" class="form-control" id="lastname" placeholder="smith">
+                                <input type="text" class="form-control" id="lastname" placeholder="N/A" disabled>
                             </div>
                         </form>
                     </div>
@@ -73,11 +73,11 @@
                         <form class="left">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Documenter</label>
-                                <input type="email" class="form-control" id="doc" aria-describedby="0000" placeholder="full name">
+                                <input type="email" class="form-control" id="doc" aria-describedby="0000" placeholder="full name" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Medical Staff 1</label>
-                                <input type="text" class="form-control" id="med" placeholder="n/a">
+                                <input type="text" class="form-control" id="med" placeholder="n/a" disabled>
                             </div>
                         </form>
                     </div>
@@ -111,12 +111,12 @@
                                     <h6>Patient Status:</h6>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="status1" name="living" class="custom-control-input"
-                                            value="Alive">
+                                            value="Alive" disabled>
                                         <label class="custom-control-label" for="status1">Alive</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="status2" name="living" class="custom-control-input"
-                                            value="Deceased">
+                                            value="Deceased" disabled>
                                         <label class="custom-control-label" for="status2">Deceased</label>
                                     </div>
                                 </div>
@@ -124,17 +124,17 @@
                                     <h6>Transfered to:</h6>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="t1" name="transfered" class="custom-control-input"
-                                            value="ICU">
+                                            value="ICU" disabled>
                                         <label class="custom-control-label" for="t1">ICU</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="t2" name="transfered" class="custom-control-input"
-                                            value="Morgue">
+                                            value="Morgue" disabled>
                                         <label class="custom-control-label" for="t2">Morgue</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="t3" name="transfered" class="custom-control-input"
-                                            value="Stayed in Unit">
+                                            value="Stayed in Unit" disabled>
                                         <label class="custom-control-label" for="t3">Stayed in Unit</label>
                                     </div>
                                     <div class="custom-control custom-radio">
@@ -146,11 +146,11 @@
                                 <div class="col-sm left">
                                     <h6>Family Notified</h6>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="f1" name="family" class="custom-control-input" value="yes">
+                                        <input type="radio" id="f1" name="family" class="custom-control-input" value="yes" disabled>
                                         <label class="custom-control-label" for="f1">Yes</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="f2" name="family" class="custom-control-input" value="no">
+                                        <input type="radio" id="f2" name="family" class="custom-control-input" value="no" disabled>
                                         <label class="custom-control-label" for="f2">No</label>
                                     </div>
                                 </div>
@@ -193,5 +193,7 @@
     </div>
 </body>
 <script src="view.js" type="text/JavaScript"></script>
-
+<script>
+$("#Other").prop("checked", true);
+</script>
 </html>

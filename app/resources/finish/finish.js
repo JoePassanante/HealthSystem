@@ -110,6 +110,8 @@ const inputRow = function (form) {
     parent.append("<td>" + (form.action || "N/A") + "</td>"); // Action Performed
     parent.append("<td>" + (form.author || "N/A") + "</td>"); // Action Performed
     parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
+    parent.append('<td><button class="btn btn-secondary data-toggle="modal" data-target="#exampleModalCenter">Edit</button>'+"</td>"); // Notes
+
 }
 const formatdate = function (date) {
     if (!(date instanceof Date)) {

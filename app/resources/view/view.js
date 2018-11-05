@@ -5,6 +5,51 @@ const codeID = urlParams.get('codeid');
 console.log("myCode", codeID)
 const baseURL = '/api/data/?codeid=' + codeID
 let currID = 0
+
+//All the input fields... ouch
+//Patient
+const pid = document.getElementById("id")
+const pfn = document.getElementById("firstname")
+const pln = document.getElementById("lastname")
+
+//medical information
+const doc = document.getElementById("doc")
+
+//timing
+
+//Admin Details
+//document.querySelector('input[name="rate"]:checked').value;
+
+const fill = function(){
+    console.log("Filling....")
+    console.log(information)
+    $.ajax({
+        type: 'GEt',
+        url: '/api/codes',
+        dataType: 'json',
+        data: information,
+        success: function (data) {
+            //we need to go through and cherry pick our code. 
+            let datapoints = data.datapoints
+            for(index in datapoints){
+
+            }
+
+        },
+        error: function (data) {
+            console.log("Error",data)
+        }
+    });
+}
+
+//attach to button
+//exitcode
+$("#printcode").click((event)=>{
+	event.preventDefault();
+    window.print();
+})
+
+//load code stuff
 $.ajax({
     type: 'GET',
     url: baseURL,
@@ -29,75 +74,6 @@ $.ajax({
         console.log("Error")
     }
 });
-//All the input fields... ouch
-//Patient
-const pid = document.getElementById("id")
-const pfn = document.getElementById("firstname")
-const pln = document.getElementById("lastname")
-
-//medical information
-const doc = document.getElementById("doc")
-
-//timing
-
-//Admin Details
-//document.querySelector('input[name="rate"]:checked').value;
-
-const save = function (event) {
-    //check box details
-    let livingSelection = document.querySelector('input[name="living"]:checked').value || "NDF";
-    let transfered = document.querySelector('input[name="transfered"]:checked').value || "NDF";
-    let family = document.querySelector('input[name="family"]:checked').value || "NDF";
-    //final thing
-    let information = {
-        //Patient Data
-        Patient: {
-            firstname: pfn.value,
-            lastname: pln.value,
-            patientID: pid.value
-        },
-        Medical: {
-            documenter: doc.value,
-            others: []
-        },
-        Timing: {},
-        AdminDetails: {
-            status: livingSelection,
-            transfered: transfered,
-            family: family
-        }
-    }
-
-    console.log("Saving....")
-    console.log(information)
-    $.ajax({
-        type: 'POST',
-        url: '/api/code/?codeid=' + codeID,
-        dataType: 'json',
-        data: information,
-        success: function (data) {
-            console.log(data)
-            window.location = "http://localhost:8080/"
-        },
-        error: function (data) {
-            console.log("Error",data)
-        }
-    });
-}
-
-//attach to button
-//exitcode
-$("#exitcode").click((event)=>{
-	event.preventDefault();
-	if (confirm("Are you sure you want to save and exit the code! \n\nYou will not be able to edit again!")) {
-        console.log("Done")
-        save()
-		// window.location = "http://localhost:8080/finish/?codeid="+codeID
-    } else {
-        console.log("Not done")
-    }
-})
-
 
 const inputRow = function (form) {
     currID = currID + 1
@@ -117,6 +93,3 @@ const formatdate = function (date) {
     }
     return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds()
 }
-window.onbeforeunload = function () {
-    return 'Are you sure you want to leave?';
-};
