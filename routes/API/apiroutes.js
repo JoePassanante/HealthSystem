@@ -2,6 +2,18 @@ const Code = require("../../app/models/code")
 const Entry = require("../../app/models/entry")
 module.exports = function (express, passport) {
     router = express.Router();
+    //pending
+    router.get("/pendingcodes", (req, res, next) => {
+        console.log("Getting data...")
+        //Get the data from the database. 
+        Code.find({ canEdit: true }).lean().exec(function (err, codes) {
+            if (err || codes == undefined || codes == null) {
+                return res.status(406).json({ "message": "No course found", datapoints: [] })
+            }
+            return res.status(200).json({ "message": "Here we go!", datapoints: codes })
+
+        })
+    })
     router.get("/codes", (req, res, next) => {
         console.log("Getting data...")
         //Get the data from the database. 
@@ -10,6 +22,17 @@ module.exports = function (express, passport) {
                 return res.status(406).json({ "message": "No course found", datapoints: [] })
             }
             return res.status(200).json({ "message": "Here we go!", datapoints: codes })
+
+        })
+    })
+    router.get("/code", (req, res, next) => {
+        console.log("Getting data...", req.query)
+        //Get the data from the database. 
+        Code.findOne({ _id: req.query.codeid }).lean().exec(function (err, code) {
+            if (err || code == undefined || code == null) {
+                return res.status(406).json({ "message": "No course found", datapoints: [] })
+            }
+            return res.status(200).json({ "message": "Here we go!", datapoints: [code] })
 
         })
     })
@@ -68,6 +91,8 @@ module.exports = function (express, passport) {
             code.patientstatus = data.AdminDetails.status
             code.transfered = data.AdminDetails.transfered
             code.family = data.AdminDetails.family
+
+            code.enddate = new date()
 
             code.save(function (err) {
                 console.log("Saved")

@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
     catagory: {type: String, required: false, default: ""},
     date: {type: Date, required: false, default: new Date()},
-    
+    enddate:{type: Date, required: false, default: null},
     //information
     patientid: {type: String, required: false, default: ""},
     firstname: {type: String, required: false, default: ""},

@@ -13,7 +13,14 @@ module.exports = function (express, passport) {
 
         res.sendFile(file)
     })
+    //settings
+    router.get("/settings", (req, res, next) => { 
 
+        let file = path.join(__dirname, "..", "..", "app", "resources", "settings","settings.html") 
+        console.log(file)
+
+        res.sendFile(file)
+    })
 
     router.get("/startcode/:id",(req,res,next)=>{
         console.log("Current Code",req.params)

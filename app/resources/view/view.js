@@ -2,6 +2,7 @@ console.log("Dependency Added.")
 console.log("Getting current data...")
 const urlParams = new URLSearchParams(window.location.search);
 const codeID = urlParams.get('codeid');
+document.getElementById("codeID").innerText = "ID: " + codeID
 console.log("myCode", codeID)
 const baseURL = '/api/data/?codeid=' + codeID
 let currID = 0
@@ -25,15 +26,24 @@ const fill = function(){
     
     $.ajax({
         type: 'GET',
-        url: '/api/codes',
+        url: '/api/code/?codeid=' + codeID,
         dataType: 'json',
         success: function (data) {
+            console.log("data",data)
             //we need to go through and cherry pick our code. 
             let datapoints = data.datapoints
             for(index in datapoints){
                 let dp = datapoints[index]
                 if(dp._id == codeID){
-                
+                    document.getElementById("patstatus").innerText = dp.patientstatus
+                    document.getElementById("transfered").innerText = dp.transfered
+                    document.getElementById("familynotified").innerText = dp.family
+
+                    document.getElementById("startdate").innerText = formatdate((dp.date)) || "N/A"
+                    document.getElementById("enddate").innerText = formatdate((dp.enddate)) || "N/A"
+                    document.getElementById("totaltime").innerText = dp.family || "N/A"
+
+
                     pid.value = dp.patientid
                     pfn.value = dp.firstname
                     pln.value = dp.lastname
@@ -94,6 +104,10 @@ const inputRow = function (form) {
     parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
 }
 const formatdate = function (date) {
+    if(date==null){
+        return null
+    }
+    date = new Date(date)
     if (!(date instanceof Date)) {
         return null
     }

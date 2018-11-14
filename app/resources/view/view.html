@@ -30,6 +30,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <!-- additional nav items would go here but we don't have any -->
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
             <button class="btn btn-outline-success my-2 my-sm-0" id="printcode">Print</button>
@@ -40,17 +43,19 @@
 <body>
     <div class="content">
         <!-- Content -->
-        <h1>Final Information</h1>
+        <h1>Cardiac Arrest</h1>
+        <h6 id="codeID"></h6>
         <div class="row">
             <div class="col-12 col-md-12 col-lg-6 center xxx">
                 <!-- Card -->
                 <div class="card" style="width: 100%;">
                     <div class="card-body">
-                        <h5 class="card-title">Patient Details</h5>
+                        <h5 class="card-title">Patient Identification</h5>
                         <form class="left">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Patient ID</label>
-                                <input type="email" class="form-control" id="id" aria-describedby="0000" placeholder="N/A" disabled>
+                                <input type="email" class="form-control" id="id" aria-describedby="0000" placeholder="N/A"
+                                    disabled>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Firstname</label>
@@ -73,11 +78,12 @@
                         <form class="left">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Documenter</label>
-                                <input type="email" class="form-control" id="doc" aria-describedby="0000" placeholder="full name" disabled>
+                                <input type="email" class="form-control" id="doc" aria-describedby="0000" placeholder="N/A"
+                                    disabled>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Medical Staff 1</label>
-                                <input type="text" class="form-control" id="med" placeholder="n/a" disabled>
+                                <input type="text" class="form-control" id="med" placeholder="N/A" disabled>
                             </div>
                         </form>
                     </div>
@@ -94,8 +100,23 @@
                 <div class="card" style="width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title">Timing Details</h5>
-                        N/A
+                        <div class="container">
+                            <div class="row center">
+                                <div class="col-sm left center">
+                                    <h6>Date Started</h6>
+                                    <p id="startdate"></p>
+                                </div>
+                                <div class="col-sm left center">
+                                    <h6>Date Ended</h6>
+                                    <p id="enddate"></p>
+                                </div>
+                                <div class="col-sm left center">
+                                    <h6>Total Duration</h6>
+                                    <p id="totaltime"></p>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
                 <!-- End Card -->
@@ -104,55 +125,20 @@
                 <!-- Card -->
                 <div class="card" style="width: 100%;">
                     <div class="card-body">
-                        <h5 class="card-title">Admin Details</h5>
+                        <h5 class="card-title">Patient Details</h5>
                         <div class="container">
-                            <div class="row">
-                                <div class="col-sm left">
+                            <div class="row center">
+                                <div class="col-sm left center ">
                                     <h6>Patient Status:</h6>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="status1" name="living" class="custom-control-input"
-                                            value="Alive" disabled>
-                                        <label class="custom-control-label" for="status1">Alive</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="status2" name="living" class="custom-control-input"
-                                            value="Deceased" disabled>
-                                        <label class="custom-control-label" for="status2">Deceased</label>
-                                    </div>
+                                    <p id="patstatus"></p>
                                 </div>
                                 <div class="col-sm left">
                                     <h6>Transfered to:</h6>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="t1" name="transfered" class="custom-control-input"
-                                            value="ICU" disabled>
-                                        <label class="custom-control-label" for="t1">ICU</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="t2" name="transfered" class="custom-control-input"
-                                            value="Morgue" disabled>
-                                        <label class="custom-control-label" for="t2">Morgue</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="t3" name="transfered" class="custom-control-input"
-                                            value="Stayed in Unit" disabled>
-                                        <label class="custom-control-label" for="t3">Stayed in Unit</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="t4" name="transfered" class="custom-control-input"
-                                            value="Other">
-                                        <label class="custom-control-label" for="t4">Other</label>
-                                    </div>
+                                    <p id="transfered"></p>
                                 </div>
                                 <div class="col-sm left">
                                     <h6>Family Notified</h6>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="f1" name="family" class="custom-control-input" value="yes" disabled>
-                                        <label class="custom-control-label" for="f1">Yes</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="f2" name="family" class="custom-control-input" value="no" disabled>
-                                        <label class="custom-control-label" for="f2">No</label>
-                                    </div>
+                                    <p id="familynotified"></p>
                                 </div>
                             </div>
                         </div>
@@ -190,10 +176,22 @@
     <!-- End code events -->
     <div class="content">
         <h1>Signatures </h1>
+        <div class="row">
+            <div class="col"> <input type="text" class="signature" />
+            </div>
+            <div class="col"> <input type="text" class="signature" />
+            </div>
+            <div class="w-100"></div>
+            <div class="col"> <input type="text" class="signature" />
+            </div>
+            <div class="col"> <input type="text" class="signature" />
+            </div>
+        </div>
     </div>
 </body>
 <script src="view.js" type="text/JavaScript"></script>
 <script>
-$("#Other").prop("checked", true);
+// $("#Other").prop("checked", true);
 </script>
+
 </html>
