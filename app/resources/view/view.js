@@ -41,7 +41,7 @@ const fill = function(){
 
                     document.getElementById("startdate").innerText = formatdate((dp.date)) || "N/A"
                     document.getElementById("enddate").innerText = formatdate((dp.enddate)) || "N/A"
-                    document.getElementById("totaltime").innerText = dp.family || "N/A"
+                    document.getElementById("totaltime").innerText = duration(dp.date,dp.enddate) || "N/A"
 
 
                     pid.value = dp.patientid
@@ -112,5 +112,18 @@ const formatdate = function (date) {
         return null
     }
     return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds()
+}
+const duration = function(date1,date2){
+    try{    
+        let a = new Date(date1)
+        let b = new Date(date2)
+        let x = b-a
+        let seconds = Math.floor((x/1000)%60)
+        let minutes = Math.floor(((x/(1000*60))%60))
+        let hours = Math.floor(((x/(1000*60*60))%24))
+        return hours + " Hours, " + minutes + " Minutes, " + seconds + " Seconds" 
+    }catch(err){
+        return null
+    }
 }
 fill()

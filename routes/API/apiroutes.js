@@ -1,7 +1,56 @@
 const Code = require("../../app/models/code")
 const Entry = require("../../app/models/entry")
+const Quick = require("../../app/models/quick")
+
 module.exports = function (express, passport) {
     router = express.Router();
+
+    //Button Stuff
+    router.get("/quicks", (req, res, next) => {
+        Quick.find().exec(function (err, quicks) {
+            if(err || quicks.length == 0 || quicks == undefined || quicks == null){
+                return res.status(406).json({ "message": "Here we go!", datapoints: [] })
+            }
+            console.log(quicks)
+            return res.status(200).json({ "message": "Here we go!", datapoints: quicks})
+        })
+    })
+    router.post("/quick",(req,res,next)=>{
+        let data = req.body
+        console.log("data",data)
+        if(!data.hasOwnProperty("action") || !data.hasOwnProperty("notes") || !data.hasOwnProperty("state")){
+            console.log("Missing")
+            return res.status(500).send("")
+        }
+        console.log("Processing...")
+        let quick = new Quick()
+        quick.action = data.action;
+        quick.notes = data.notes;
+        quick.state = data.state;
+        quick.save(function(err){
+            if(err){
+                console.log("error")
+            }
+            console.log("Done")
+            res.status(200).json({"status":200})
+        })
+    })
+    router.delete("/quick",(req,res,next)=>{
+        if(!req.body.hasOwnProperty("id")){
+            return res.status(500).json({"message":"Nope."})
+        }
+        Quick.remove({_id: req.body.id }).exec(function (err) {
+            if(err){
+                return res.status(500).json({"message":"Nope."})
+            }
+            console.log("Done")
+            res.status(200).json({"status":200})
+        })
+    })
+
+
+
+
     //pending
     router.get("/pendingcodes", (req, res, next) => {
         console.log("Getting data...")
@@ -92,7 +141,7 @@ module.exports = function (express, passport) {
             code.transfered = data.AdminDetails.transfered
             code.family = data.AdminDetails.family
 
-            code.enddate = new date()
+            code.enddate = new Date()
 
             code.save(function (err) {
                 console.log("Saved")
