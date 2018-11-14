@@ -92,10 +92,10 @@ const inputRow = function(form){
 	parent.append("<th scope=\"row\">" + currID + "</th>");
 	console.log("Append")
 	parent.append("<td>" + (formatdate(new Date(form.date)) || "N/A") + "</td>"); //Data
-	parent.append("<td>" + (form.state || "N/A") + "</td>"); // State
-	parent.append("<td>" + (form.action || "N/A") + "</td>"); // Action Performed
-	parent.append("<td>" + (form.author    || "N/A") + "</td>"); // Action Performed
-	parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
+	parent.append("<td contenteditable>" + (form.state || "N/A") + "</td>"); // State
+	parent.append("<td contenteditable>" + (form.action || "N/A") + "</td>"); // Action Performed
+	parent.append("<td contenteditable>" + (form.author    || "N/A") + "</td>"); // Action Performed
+	parent.append("<td contenteditable>" + (form.notes || "N/A") + "</td>"); // Notes
 	scroll()
 }
 const formatdate = function (date) {

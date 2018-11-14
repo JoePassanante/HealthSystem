@@ -9,7 +9,7 @@ module.exports = function (express, passport) {
     router.get("/quicks", (req, res, next) => {
         Quick.find().exec(function (err, quicks) {
             if(err || quicks.length == 0 || quicks == undefined || quicks == null){
-                return res.status(406).json({ "message": "Here we go!", datapoints: [] })
+                return res.status(200).json({ "message": "Here we go!", datapoints: [] })
             }
             console.log(quicks)
             return res.status(200).json({ "message": "Here we go!", datapoints: quicks})

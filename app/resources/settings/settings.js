@@ -69,9 +69,6 @@ var app = new Vue({
 				success: function (data) {
 					console.log(data)
 					if (data.hasOwnProperty("datapoints")) {
-						//we have data. 
-						if (data.datapoints.length == 0)
-							return
 						vue.customs = data.datapoints
 					} else {
 						throw "NO DATA POINTS"

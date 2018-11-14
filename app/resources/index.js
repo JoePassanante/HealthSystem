@@ -14,7 +14,7 @@ Vue.component('codecheck', {
 		<h4>Patient: {{code.firstname}} {{code.lastname}}</h4>
 		<h5>ID: {{code.patientid}}</h5>
 		<h4>Documenter: {{code.documenter}}</h4>
-		<p>Date: {{code.format}}</p>
+		<p>Start Date: {{code.format}}</p>
 		<!-- <a v-bind:href="'/view/?codeid='+ code._id" class="btn btn-info">View</a> -->
 		<button @click="getClick" v-bind:href="'/view/?codeid='+ code._id" type="button" class="btn btn-info">{{name}}</button>
 		<p class="text-muted" style="font-size: 12px;">UID: {{code._id}}</p>
