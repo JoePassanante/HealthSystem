@@ -2,71 +2,79 @@
 <!-- Home -->
 <html>
 
-    <head>
-        <title>Home</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<head>
+    <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <!-- Popper JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <nav>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">QU Health System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/settings">Settings</a>
-                    </li>
+    <link rel="stylesheet" href="index.css">
+</head>
+<nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">QU Health System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings">Settings</a>
+                </li>
 
-                </ul>
-            </div>
-        </nav>
+            </ul>
+        </div>
     </nav>
-    <body>
+</nav>
 
-        <!-- Three Primary Codes -->
-        <div id="codes" class="container">
-            <div class="row">
-                <!-- CARD -->
-                <div class="center">
-                    <div class="col-sm center">
-                        <a href="/startcode/heart" class="card active">
-                            <img class="card-img-bottom" src="https://image.flaticon.com/icons/svg/63/63796.svg" alt="Card image cap">
-                            <div class="card-body center">
-                                    <h2 class="card-title">Start Code</h2>
-                                </div>
-                            </a>
-                    </div>
+<body>
+
+    <!-- Three Primary Codes -->
+    <div id="codes" class="container">
+        <div class="row">
+            <!-- CARD -->
+            <div class="center">
+                <div class="col-sm center">
+                    <a href="/startcode/heart" class="card active">
+                        <img class="card-img-bottom" src="https://image.flaticon.com/icons/svg/63/63796.svg" alt="Card image cap">
+                        <div class="card-body center">
+                            <h2 class="card-title">Start Code</h2>
+                        </div>
+                    </a>
                 </div>
+            </div>
 
+        </div>
+    </div>
+    <div style="margin-left: 30px; margin-right: 30px;">
+        <h1>Completed Codes</h1>
+        <div class="row" id="loadcodes">
+            <div class="col-6 col-md-6 col-lg-4 yoo" v-for="code in codes">
+                    <codecheck go="/view" :code="code" name="View"></codecheck>
             </div>
         </div>
-        <h1>Completed Codes</h1>
-        <ul id = "done">
-
-        </ul>
         <h1>Pending Codes</h1>
-        <ul id = "pending">
+        <div class="row" id="loadpending">
+                <div class="col-6 col-md-6 col-lg-4 yoo" v-for="code in codes">
+                        <codecheck go="/edit" :code="code" name="Edit"></codecheck>
+                </div>
+            </div>
+    </div>
+</body>
+<script src="index.js" type="text/JavaScript"></script>
 
-        </ul>
-    </body>
-    <script src="index.js" type="text/JavaScript"></script>
 </html>
