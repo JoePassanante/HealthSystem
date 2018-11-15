@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
@@ -40,25 +41,26 @@
 <body>
     <!-- Modal -->
     <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <!-- End -->
     <div class="content">
         <!-- Content -->
@@ -92,17 +94,18 @@
                 <div class="card" style="width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title">Medical Personal Involvement</h5>
-                        <form class="left">
+                        <form class="left" id="people">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Documenter</label>
                                 <input type="email" class="form-control" id="doc" aria-describedby="0000" placeholder="full name">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Medical Staff 1</label>
-                                <input type="text" class="form-control" id="med" placeholder="n/a">
+                                <label for="exampleInputPassword1">Medical Staff</label>
+                                <input type="text" class="form-control staffmember" id="med" placeholder="n/a">
                             </div>
-                            <button type="button" class="btn btn-secondary">Add another</button>
                         </form>
+                        <button id="addanother" type="button" class="btn btn-secondary">Add another</button>
+
                     </div>
                 </div>
                 <!-- End Card -->
@@ -133,8 +136,7 @@
                                 <div class="col-sm left">
                                     <h6>Patient Status:</h6>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="Alive" name="living" class="custom-control-input"
-                                            value="Alive">
+                                        <input type="radio" id="Alive" name="living" class="custom-control-input" value="Alive">
                                         <label class="custom-control-label" for="Alive">Alive</label>
                                     </div>
                                     <div class="custom-control custom-radio">
@@ -187,29 +189,36 @@
         <hr />
         <h1>Code Events</h1>
     </div> <!-- End row -->
-    <table class="table medical">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Date</th>
-                <th scope="col">State</th>
-                <th scope="col">Action Performed</th>
-                <th scope="col">Completed By</th>
-                <th scope="col">Notes</th>
-            </tr>
-        </thead>
-        <tbody id="objects">
-            <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>10/10/10</td>
-                    <td>DYING</td>
-                    <td>Not dead yet</td>
-                    <td>Live saving god</td>
-                    <td>Joe Passanante</td>
-                    <td>Notes</td>
-                </tr> -->
-        </tbody>
-    </table>
+    <!-- Normal Page -->
+    <div id="work">
+        <fieldset class="medicalgroup">
+            <legend>Code</legend>
+            <table class="table medical" style="table-layout: fixed;width: 100%;   ">
+                <col width="30px" />
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action Performed</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Completed By</th>
+                    <th scope="col">Notes</th>
+                </tr>
+                <tr scope="row" v-for="entry in entries">
+                    <th>{{entry.index}}</th>
+
+                    <td>{{entry.format}}</td>
+
+                    <td class="needslistener" box="action" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.action}}</td>
+
+                    <td class="needslistener" box="state" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.state}}</td>
+
+                    <td class="needslistener" box="author" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.author}}</td>
+
+                    <td class="needslistener" box="notes" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.notes}}</td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
     <!-- End code events -->
     <div class="content">
         <h1>Signatures </h1>

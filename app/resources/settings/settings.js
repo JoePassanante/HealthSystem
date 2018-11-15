@@ -14,7 +14,7 @@ Vue.component('buttoncard', {
 		<p><b>Action: </b>{{c.action}}</p>
 		<p><b>State: </b>{{c.state}}</p>
 		<p><b>Notes: </b>{{c.notes}}</p>
-		<button @click="getClickEdit" type="button" class="btn btn-info">Edit Action</button>
+		<!-- <button @click="getClickEdit" type="button" class="btn btn-info">Edit Action</button> -->
 		<button @click="getClickRemove" type="button" class="btn btn-danger">Remove</button>
 		</div>
 	</a>

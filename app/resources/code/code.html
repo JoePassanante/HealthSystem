@@ -39,36 +39,17 @@
 </nav>
 
 <body>
-    <div id="letsjustfuckingdoit">
+    <div id="work">
         <!-- Bottom Nav Bar -->
         <div id="NavBottom" class="">
             <div id="states" class="navseperator center">
                 <div class="center" id="top">
-                    <button id="arrest" type="button" class="btn btn-light btn-sm selected">Cardiac Arrest</button>
-                    <button id="fib" type="button" class="btn btn-light btn-sm">Atrial Fibrillation</button>
-                    <button id="arrest" type="button" class="btn btn-light btn-sm">Congestive Heart Failure</button>
-                    <button id="arrest" type="button" class="btn btn-light btn-sm">Stroke</button>
-                    <button id="arrest" type="button" class="btn btn-light btn-sm">Myocardial Infarction</button>
-
-                </div>
-                <div class="center navseperator" id="bottom">
-                    <button type="button" class="btn btn-light btn-sm">CPR</button>
-                    <button type="button" class="btn btn-light btn-sm">(Blood Pressure Support) Epinephrine</button>
-                    <button type="button" class="btn btn-light btn-sm">(Antiarrhythmic) Amiodarone</button>
-                    <button type="button" class="btn btn-light btn-sm">(Involuntary Nervous System Blocker) Atropine</button>
-
+                    <template v-for="b in buttons">
+                            <specialbutton :data="b"></specialbutton>
+                    </template>
                 </div>
                 <!-- Top of Form -->
                 <div class="row navseperator">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">State</span>
-                            </div>
-                            <input id="state" type="text" class="form-control" placeholder="State..." aria-label="Code"
-                                aria-describedby="basic-addon1">
-                        </div>
-                    </div>
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -78,6 +59,15 @@
                                 aria-describedby="basic-addon1">
                         </div>
                     </div>
+                    <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">State</span>
+                                </div>
+                                <input id="state" type="text" class="form-control" placeholder="State..." aria-label="Code"
+                                    aria-describedby="basic-addon1">
+                            </div>
+                        </div>
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -124,18 +114,18 @@
                     <th scope="col">Notes</th>
                 </tr>
                 <tr scope="row" v-for="entry in entries">
-                    <th>{{entry.index}}</th>
-
-                    <td>{{entry.format}}</td>
-
-                    <td class="needslistener" :name="entry._id" contenteditable>{{entry.action}}</td>
-
-                    <td class="needslistener" :name="entry._id" contenteditable>{{entry.state}}</td>
-
-                    <td class="needslistener" :name="entry._id" contenteditabl>{{entry.author}}</td>
-
-                    <td class="needslistener" :name="entry._id" contenteditable>{{entry.notes}}</td>
-                </tr>
+                        <th>{{entry.index}}</th>
+    
+                        <td>{{entry.format}}</td>
+    
+                        <td class="needslistener" box="action" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.action}}</td>
+    
+                        <td class="needslistener" box="state" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.state}}</td>
+    
+                        <td class="needslistener" box="author" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.author}}</td>
+    
+                        <td class="needslistener" box="notes" :name="entry._id" onkeydown="return (event.keyCode!=13);" contenteditable>{{entry.notes}}</td>
+                    </tr>
             </table>
         </fieldset>
     </div>

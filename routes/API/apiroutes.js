@@ -103,6 +103,26 @@ module.exports = function (express, passport) {
             })
         })
     })
+    router.put("/entry", (req, res, next) => {
+        console.log("Getting data...")
+        console.log("parameters", req.query)
+        //Get the data from the database. 
+        Entry.findOne({_id: req.body.id}).exec((err, entry) => {
+            console.log(entry)
+            if (err) {
+                return res.status(406).json({ "message": "No data"})
+            }
+            console.log(entry)
+            entry[req.body.change] = req.body.data;
+            console.log(entry)
+            entry.save(function(err){
+                if(err){
+                    return res.status(500).json({"x":'x'})
+                }
+                return res.status(200).json({ "message": "Data Found"})
+            })
+        })
+    })
     router.post("/data", (req, res) => {
         console.log("GOT IT")
         console.log(req.body, req.query.codeid)
@@ -136,11 +156,12 @@ module.exports = function (express, passport) {
             code.lastname = data.Patient.lastname || "N/A"
 
             code.documenter = data.Medical.documenter || "N/A"
+            code.others = data.Medical.others || []
 
             code.patientstatus = data.AdminDetails.status
             code.transfered = data.AdminDetails.transfered
             code.family = data.AdminDetails.family
-
+            
             code.enddate = new Date()
 
             code.save(function (err) {

@@ -21,47 +21,61 @@ const doc = document.getElementById("doc")
 //Admin Details
 //document.querySelector('input[name="rate"]:checked').value;
 
-const fill = function(){
+const fill = function () {
     console.log("Filling....")
-    
+
     $.ajax({
         type: 'GET',
         url: '/api/code/?codeid=' + codeID,
         dataType: 'json',
         success: function (data) {
-            console.log("data",data)
+            console.log("data", data)
             //we need to go through and cherry pick our code. 
             let datapoints = data.datapoints
-            for(index in datapoints){
+            for (index in datapoints) {
                 let dp = datapoints[index]
-                if(dp._id == codeID){
+                if (dp._id == codeID) {
                     document.getElementById("patstatus").innerText = dp.patientstatus
                     document.getElementById("transfered").innerText = dp.transfered
                     document.getElementById("familynotified").innerText = dp.family
 
                     document.getElementById("startdate").innerText = formatdate((dp.date)) || "N/A"
                     document.getElementById("enddate").innerText = formatdate((dp.enddate)) || "N/A"
-                    document.getElementById("totaltime").innerText = duration(dp.date,dp.enddate) || "N/A"
+                    document.getElementById("totaltime").innerText = duration(dp.date, dp.enddate) || "N/A"
 
 
                     pid.value = dp.patientid
                     pfn.value = dp.firstname
                     pln.value = dp.lastname
                     doc.value = dp.documenter
+                    if (!dp.hasOwnProperty("others")) {
+                        console.log("Done")
+                        return
+                    }
+                    for (index in dp.others) {
+                        $("#people").append(
+                            `
+                            <div class="form-group">
+                            <label for="exampleInputPassword1">Medical Staff</label>
+                            <input disabled type="text" class="form-control staffmember" id="med`+index+`" placeholder="n/a">
+                        </div>
+                            `)
+                        document.getElementById("med"+index).value = dp.others[index]
+                    }
                 }
             }
 
         },
         error: function (data) {
-            console.log("Error",data)
+            console.log("Error", data)
         }
     });
 }
 
 //attach to button
 //exitcode
-$("#printcode").click((event)=>{
-	event.preventDefault();
+$("#printcode").click((event) => {
+    event.preventDefault();
     window.print();
 })
 
@@ -104,7 +118,7 @@ const inputRow = function (form) {
     parent.append("<td>" + (form.notes || "N/A") + "</td>"); // Notes
 }
 const formatdate = function (date) {
-    if(date==null){
+    if (date == null) {
         return null
     }
     date = new Date(date)
@@ -113,16 +127,16 @@ const formatdate = function (date) {
     }
     return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds()
 }
-const duration = function(date1,date2){
-    try{    
+const duration = function (date1, date2) {
+    try {
         let a = new Date(date1)
         let b = new Date(date2)
-        let x = b-a
-        let seconds = Math.floor((x/1000)%60)
-        let minutes = Math.floor(((x/(1000*60))%60))
-        let hours = Math.floor(((x/(1000*60*60))%24))
-        return hours + " Hours, " + minutes + " Minutes, " + seconds + " Seconds" 
-    }catch(err){
+        let x = b - a
+        let seconds = Math.floor((x / 1000) % 60)
+        let minutes = Math.floor(((x / (1000 * 60)) % 60))
+        let hours = Math.floor(((x / (1000 * 60 * 60)) % 24))
+        return hours + " Hours, " + minutes + " Minutes, " + seconds + " Seconds"
+    } catch (err) {
         return null
     }
 }

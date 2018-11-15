@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
 
     //medical
     documenter: {type: String, required: false, default: ""},
-
+    others: {type:Array, required: false, default:[]},
     //admin
     patientstatus: {type: String, required: false, default: ""},
     transfered: {type: String, required: false, default: ""},

@@ -4,28 +4,6 @@ const codeID = urlParams.get('codeid');
 console.log("myCode", codeID)
 const baseURL = '/api/data/?codeid=' + codeID
 let currID = 0
-
-const submitForm = function (event) {
-	console.log("Submitting Form")
-	const c = $("#code")
-	const s = $("#state")
-	const a = $("#action")
-	const b = $("#by")
-	const n = $("#notes")
-	let form = {
-		"state": s.val(),
-		"action": a.val(),
-		"author": b.val(),
-		"notes": n.val(),
-		"date": new Date()
-	}
-	newDatePoint(form)
-	c.val() = ""
-	s.val() = ""
-	a.val() = ""
-	b.val() = ""
-	n.val() = ""
-}
 $("#finishcode").click((event) => {
 	event.preventDefault();
 	if (confirm("Are you sure you want to finish the code! \n\nYou will not be able to edit!")) {
@@ -35,52 +13,58 @@ $("#finishcode").click((event) => {
 		console.log("Not done")
 	}
 })
-
+var bus = new Vue();
 //Do that vueeeee thangggg
-Vue.component('entryrow', {
-	// camelCase in JavaScript
-	props: {
-		entry: {
-			type: Object,
-			default: {
-				index: "N/A",
-			}
-		}
-	},
+Vue.component("specialbutton", {
+	props: ["data"],
 	template: `
-	<tr scope="row">
-	<th>{{entry.index}}</th>
-	<!--Date  -->
-	<td>{{entry.format}}</td>
-	<!-- State -->
-	<td>{{entry.action}}</td>
-	<!-- Action -->
-	<td>{{entry.state}}</td>
-	<!-- Completed -->
-	<td>{{entry.author}}</td>
-	<!-- Notes -->
-	<td>{{entry.notes}}</td>
-</tr>
+	<button @click = "onClick"style="min-width: 70px;margin-left: 5px;margin-right: 5px;" id="arrest" type="button" class="btn btn-light btn-md">{{data.action}}</button>
 	`,
 	methods: {
-
-	},
-	mounted() {
-		console.log("Here.")
+		onClick() {
+			console.log(this.data)
+			let form = {
+				"state": this.data.state || "N/A",
+				"action": this.data.action || "N/A",
+				"author": "N/A",
+				"notes": this.data.notes || "N/A",
+				"date": new Date()
+			}
+			$.ajax({
+				type: 'POST',
+				url: baseURL,
+				dataType: 'json',
+				data: form,
+				success: function (data) {
+					console.log("Telling")
+					bus.$emit('update', 'thing')
+				},
+				error: function (data) {
+				}
+			});
+		}
 	}
 })
-// Yo fuck me right?????
+
 var app = new Vue({
-	el: '#letsjustfuckingdoit',
+	el: '#work',
 	data: {
-		entries: []
+		entries: [],
+		buttons: []
 	},
 	mounted() {
 		$("#submitbutton").click(this.handleSubmit)
 		this.refresh()
+		console.log("Refreshing...")
+		this.buttonRefresh()
+	},
+	created() {
+		bus.$on('update', (text) => {
+			this.refresh()
+		})
 	},
 	methods: {
-		refresh(){
+		refresh() {
 			let vue = this;
 			console.log("mounted")
 			$.ajax({
@@ -95,12 +79,32 @@ var app = new Vue({
 							return
 						var index = 1
 						data.datapoints.forEach(function (entry) { entry.format = formatdate(new Date(entry.date)); entry.index = index; index = index + 1 });
-	
+
 						console.log(data.datapoints)
 						vue.entries = data.datapoints
 						vue.$nextTick(() => {
 							vue.attachListners()
+							scroll()
 						})
+					}
+				},
+				error: function (data) {
+					console.log("Error")
+				}
+			});
+		},
+		buttonRefresh() {
+			let vue = this;
+			$.ajax({
+				type: 'GET',
+				url: '/api/quicks',
+				dataType: 'json',
+				success: function (data) {
+					console.log(data)
+					if (data.hasOwnProperty("datapoints")) {
+						vue.buttons = data.datapoints
+					} else {
+						throw "NO DATA POINTS"
 					}
 				},
 				error: function (data) {
@@ -118,9 +122,26 @@ var app = new Vue({
 				element.removeEventListener("focusout", null);
 				element.addEventListener("focusout", () => {
 					console.log(element.getAttribute("name"))
+					vue.saveEntry(element.getAttribute("name"), element.getAttribute("box"), element.innerHTML)
 				})
 
 			})
+		},
+		saveEntry(id, box, input) {
+			// LETS FUCKING DO IT AGAIN BECAUSE FUCK ME...
+			console.log("Got", id, input, box)
+			$.ajax({
+				type: 'PUT',
+				url: '/api/entry',
+				dataType: 'json',
+				data: { id: id, change: box, data: input },
+				success: function (data) {
+
+				},
+				error: function (data) {
+					console.log("Error")
+				}
+			});
 		},
 		handleSubmit() {
 			let vue = this;
@@ -144,11 +165,11 @@ var app = new Vue({
 				data: form,
 				success: function (data) {
 					console.log(data)
-					c.value = ""
-					// s.val() = ""
-					// a.val() = ""
-					// b.val() = ""
-					// n.val() = ""
+					c.val(null)
+					s.val(null)
+					a.val(null)
+					b.val(null)
+					n.val(null)
 					vue.refresh()
 				},
 				error: function (data) {
