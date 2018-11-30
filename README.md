@@ -10,7 +10,7 @@ Make sure you have NodeJS installed on your computer. You can find a proper down
 In order to download the needed packages to run this, navigate to the root folder of this project and run `npm install`. This will automatically install all the packages located in package.json
 
 ## Running the Server
-Navigate to the root directory of the project and run the command 'node server.js' which will start the web server on port 8080. [here](http://localhost:8080).
+Navigate to the root directory of the project and run the command `node server.js` which will start the web server on port 8080. [here](http://localhost:8080).
 
 ## Database
 MongoDB is currently used for the database. Database config can be found under the config folder called "database.js". It is recommended to use [MongoDBAtlas](https://cloud.mongodb.com). Right now the database url provided is insecure and can be publically accessed, as it is publically linked here on GitHub. 
